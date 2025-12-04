@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Definitive Guide to Exness Registration & MetaTrader 5 Mastery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #00d084;
+            --dark-green: #00a368;
+            --primary-blue: #0066ff;
+            --dark-blue: #0047b3;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --light-gray: #f0f4f8;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            color: var(--black);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a2540 100%);
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-green), var(--primary-blue));
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--dark-green), var(--dark-blue));
+        }
+
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 50px rgba(0, 208, 132, 0.3);
+            position: relative;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
+
+        /* Cover Page with Animation */
+        .cover {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-blue) 50%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            animation: slideDown 1s ease-out;
+        }
+
+        .logo {
+            max-width: 250px;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .academy-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeInScale 1.5s ease-out;
+            background: linear-gradient(90deg, var(--white), var(--primary-green), var(--white));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite, fadeInScale 1.5s ease-out;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .book-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            line-height: 1.4;
+            font-weight: 300;
+            padding: 30px;
+            border-top: 3px solid rgba(0, 208, 132, 0.5);
+            border-bottom: 3px solid rgba(0, 208, 132, 0.5);
+            margin: 20px 0;
+            animation: slideInLeft 1.2s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--white);
+            font-size: 2em;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .content {
+            padding: 60px 50px;
+            position: relative;
+            background: var(--white);
+        }
+
+        /* Animated Headers */
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--primary-green);
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--primary-blue);
+            animation: expandWidth 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandWidth {
+            to {
+                width: 150px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-green);
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            position: relative;
+            padding-left: 20px;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        h2::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            animation: pulse-arrow 2s infinite;
+        }
+
+        @keyframes pulse-arrow {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--black);
+            font-size: 1.3em;
+            margin: 25px 0 10px 0;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        /* Trading Tip Box */
+        .trading-tip {
+            background: linear-gradient(135deg, #e6f9f3 0%, #cceeff 100%);
+            border-left: 6px solid var(--primary-green);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .trading-tip::before {
+            content: '💡';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 3em;
+            opacity: 0.2;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .trading-tip:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0, 208, 132, 0.3);
+        }
+
+        .trading-tip strong {
+            color: var(--dark-green);
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Trading Joke Box */
+        .trading-joke {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe6f0 100%);
+            border-left: 6px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .trading-joke::before {
+            content: '😂';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 3em;
+            opacity: 0.2;
+            animation: bounce-emoji 2s infinite;
+        }
+
+        @keyframes bounce-emoji {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .trading-joke:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .trading-joke strong {
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Comic Break */
+        .comic-break {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .comic-break h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .comic-break img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .comic-break img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 30px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        li::marker {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Animated Formula Box */
+        .formula {
+            background: linear-gradient(135deg, #0a2540 0%, #1a3a5a 100%);
+            border: 3px solid var(--primary-green);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .formula::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .formula-text {
+            font-size: 1.4em;
+            color: var(--primary-green);
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(0, 208, 132, 0.5);
+        }
+
+        /* Enhanced Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: linear-gradient(90deg, rgba(0, 208, 132, 0.1) 0%, rgba(0, 102, 255, 0.1) 100%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            color: var(--white);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe6e6 100%);
+            border-left: 6px solid #dc3545;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(220, 53, 69, 0.2);
+            animation: shake 0.5s ease-out;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-10px);
+            }
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        .info {
+            background: linear-gradient(135deg, #d1f2eb 0%, #d1ecf1 100%);
+            border-left: 6px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.2);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .preface {
+            font-style: italic;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .chapter {
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .example {
+            background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
+            border-left: 6px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .steps {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.1);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-blue) 50%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 60px 40px;
+            margin-top: 60px;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: zoomIn 1s ease-out;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        .conclusion h1 {
+            color: var(--white);
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .next-steps {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            text-align: left;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        /* Floating Action Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            animation: bounce-in 0.5s ease-out;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 208, 132, 0.6);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(0, 208, 132, 0.5);
+        }
+
+        /* Free Signals Banner */
+        .free-signals-banner {
+            margin: 40px 0;
+            padding: 0 20px;
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        .free-signals-content {
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.15), rgba(0, 102, 255, 0.15));
+            border: 3px solid var(--primary-green);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 208, 132, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .free-signals-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .free-signals-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: bounce-emoji 2s infinite;
+        }
+
+        .free-signals-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            color: var(--white);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .free-signals-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .free-signals-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 208, 132, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .free-signals-btn .arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.3em;
+        }
+
+        .free-signals-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 208, 132, 0.6);
+        }
+
+        .free-signals-btn:hover .arrow {
+            transform: translateX(10px);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .pricing-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .pricing-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(0, 208, 132, 0.4);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.1), rgba(0, 102, 255, 0.1));
+            border: 3px solid var(--primary-green);
+        }
+
+        .pricing-card.featured::after {
+            content: '⭐ MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75em;
+            font-weight: bold;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .pricing-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: #555;
+            font-size: 1em;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.3);
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 208, 132, 0.5);
+            background: linear-gradient(135deg, var(--dark-green), var(--dark-blue));
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .ebook-container {
+                box-shadow: none;
+            }
+            .chapter {
+                page-break-before: always;
+            }
+            .scroll-to-top, .progress-bar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            .academy-name {
+                font-size: 2em;
+            }
+            .book-title {
+                font-size: 1.4em;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .logo {
+                max-width: 180px;
+            }
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .pricing-title {
+                font-size: 1.8em;
+            }
+            .pricing-price {
+                font-size: 2.5em;
+            }
+            .pricing-card.featured::after {
+                font-size: 0.65em;
+                padding: 5px 35px;
+            }
+            .free-signals-content {
+                padding: 30px 20px;
+            }
+            .free-signals-title {
+                font-size: 1.6em;
+            }
+            .free-signals-text {
+                font-size: 1em;
+            }
+            .free-signals-btn {
+                font-size: 1em;
+                padding: 15px 35px;
+            }
+            .free-signals-icon {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Animated Particles -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+
+    <div class="ebook-container">
+        <!-- Cover Page -->
+        <div class="cover">
+            <div class="logo-container">
+                <img src="public/assets/images/logo.png" alt="Profit With Ease Logo" class="logo">
+            </div>
+            <div class="academy-name">Chido Forex Academy</div>
+            <div class="book-title">The Definitive Guide to Exness Registration & MetaTrader 5 Mastery</div>
+            <div class="scroll-indicator">↓</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Preface -->
+            <section class="preface">
+                <h1>Preface: Welcome to the Markets</h1>
+                <p>Welcome to <strong>Chido Forex Academy</strong>. You are about to embark on a journey that transforms novices into disciplined market operators. In the modern financial landscape, the difference between success and failure often lies in the quality of your tools and your understanding of them.</p>
+                <p>This guide is your manual for professional competence. We have partnered with <strong>Exness</strong>, a global leader in retail brokerage, to provide you with the best trading conditions—instant withdrawals, low spreads, and powerful leverage. We will guide you through setting up your account correctly, managing your risk mathematically, and executing trades with precision on the <strong>MetaTrader 5 (MT5)</strong> platform.</p>
+            </section>
+
+            <div class="trading-joke">
+                <strong>Trading Humor Break 😂</strong>
+                <p>Why did the trader bring a ladder to the market? Because they heard the sky's the limit! 📈</p>
+                <p><em>(Spoiler: They learned about stop-losses the hard way!)</em></p>
+            </div>
+
+            <!-- Chapter 1 -->
+            <section class="chapter">
+                <h1>Chapter 1: Registration and Account Setup</h1>
+                <p>The first step is establishing your professional trading identity. We use Exness because of its regulatory security and "better-than-market" conditions.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Pro Tip:</strong>
+                    <p>Take your time during registration! A small mistake in country selection can affect your payment methods forever. Measure twice, click once!</p>
+                </div>
+
+                <h2>1.1 Creating Your Personal Area</h2>
+                <p>To access the academy's specific trading benefits, you must register through our partner portal.</p>
+                <ol>
+                    <li><strong>Click the Official Registration Link:</strong> <a href="https://one.exnessonelink.com/a/33o13y13ih" style="color: var(--primary-blue);">https://one.exnessonelink.com/a/33o13y13ih</a> (Using this link connects you to the Chido Forex Academy support network).</li>
+                    <li><strong>Country Selection:</strong> Be careful here. Select your current country of residence. This cannot be changed later and determines your payment methods (e.g., M-Pesa availability) and regulatory protections.</li>
+                    <li><strong>Credentials:</strong> Enter a valid email and create a strong password.</li>
+                </ol>
+
+                <h2>1.2 The Economic Profile</h2>
+                <p>After your first login, Exness will ask for an "Economic Profile." This is a standard requirement for all regulated brokers. Answer honestly regarding your income and experience. This profile ensures the broker can legally offer you leveraged products.</p>
+
+                <div class="trading-joke">
+                    <strong>Quick Laugh 😄</strong>
+                    <p>"I told my wife I'm a risk manager. She asked why our account is empty. I said, 'See? Zero risk!'"</p>
+                </div>
+
+                <h2>1.3 Verification (KYC) – The "Unlocking" Phase</h2>
+                <div class="warning">
+                    <strong>⚠️ Critical Alert:</strong> You cannot withdraw profits until you verify your identity. Do not delay this step. Your future winning self will thank you!
+                </div>
+                <ul>
+                    <li><strong>Proof of Identity (POI):</strong> Upload a clear photo of your ID, Passport, or Driver's License. Ensure all four corners are visible and there is no glare.</li>
+                    <li><strong>Proof of Address (POA):</strong> Upload a utility bill or bank statement dated within the last 6 months. It must show your full name and the address you used during registration.</li>
+                </ul>
+
+                <div class="trading-tip">
+                    <strong>💡 Verification Hack:</strong>
+                    <p>Complete your verification IMMEDIATELY after registration. Don't wait until you have profits sitting there that you can't withdraw. That's like winning the lottery but losing the ticket!</p>
+                </div>
+            </section>
+
+            <!-- Comic Break 1 -->
+            <div class="comic-break">
+                <h3>🎨 Time for a Visual Break!</h3>
+                <p><em>Even professional traders need to smile</em></p>
+                <img src="public/assets/images/Gemini_Generated_Image_egb5mtegb5mtegb5.png" alt="Trading Comic 1">
+            </div>
+
+            <!-- Chapter 2 -->
+            <section class="chapter">
+                <h1>Chapter 2: Choosing the Right Account Type</h1>
+                <p>Exness offers different accounts for different styles. For Chido Forex Academy students, we recommend starting with the Standard tier.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account Type</th>
+                            <th>Best For</th>
+                            <th>Minimum Deposit</th>
+                            <th>Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Standard</strong></td>
+                            <td>Most Traders</td>
+                            <td>~$10</td>
+                            <td>Spread-only (no commission). Great for swing trading.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Cent</strong></td>
+                            <td>Beginners</td>
+                            <td>~$10</td>
+                            <td>Balance shows in cents (e.g., $10 = 1,000 cents). Perfect for practicing with real money but tiny risk.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Raw Spread</strong></td>
+                            <td>Scalpers</td>
+                            <td>~$200</td>
+                            <td>0.0 spreads + Commission. Best for automated strategies.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pro</strong></td>
+                            <td>Experts</td>
+                            <td>~$200</td>
+                            <td>Instant Execution (no slippage). 0 Commission.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info">
+                    <strong>🎯 Recommendation:</strong> Open a <span class="highlight">Standard</span> account for your main trading, or a <span class="highlight">Standard Cent</span> account if you are depositing less than $50 and want to practice risk management.
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 Account Selection Wisdom:</strong>
+                    <p>The Standard Cent account is like training wheels for your bicycle. You can fall without breaking bones. Use it to practice until you're ready for the big bike!</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Market Humor 📊</strong>
+                    <p>Q: What's the difference between a trader and a large pizza?</p>
+                    <p>A: A large pizza can feed a family of four! 😂</p>
+                    <p><em>(Just kidding! With proper risk management, you'll do great!)</em></p>
+                </div>
+            </section>
+
+            <!-- Comic Break 2 -->
+            <div class="comic-break">
+                <h3>😄 Laughter Break - Recharge Your Brain!</h3>
+                <img src="public/assets/images/Gemini_Generated_Image_k8xasik8xasik8xa.png" alt="Trading Comic 2">
+            </div>
+
+            <!-- Chapter 3 -->
+            <section class="chapter">
+                <h1>Chapter 3: Setting Up MetaTrader 5 (MT5)</h1>
+                <p>MT5 is your cockpit. It is where analysis meets execution.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Platform Power Move:</strong>
+                    <p>Download MT5 on BOTH mobile and desktop. Your phone for monitoring on-the-go, your computer for serious analysis. Pro traders are always connected!</p>
+                </div>
+
+                <h2>3.1 Downloading the Platform</h2>
+                <ul>
+                    <li><strong>Mobile:</strong> Download "MetaTrader 5" from the App Store or Google Play.</li>
+                    <li><strong>PC:</strong> Download the MT5 terminal directly from the Exness website to get the correct server configurations.</li>
+                </ul>
+
+                <h2>3.2 Logging In</h2>
+                <div class="steps">
+                    <ol>
+                        <li>Go to your Exness Personal Area and find your trading account.</li>
+                        <li>Click "Trade" to see your <strong>Server</strong> (e.g., <code>Exness-MT5Real9</code>) and <strong>Login ID</strong>.</li>
+                        <li>Open MT5, go to <strong>Manage Accounts > +</strong>.</li>
+                        <li>Search for "Exness Technologies Ltd".</li>
+                        <li>Enter your Login ID, Password, and—crucially—select the exact Server shown in your dashboard.</li>
+                    </ol>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Common Mistake Alert:</strong> Selecting the wrong server is like trying to unlock your house with your car key. Triple-check that server name!
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Tech Humor 💻</strong>
+                    <p>Trader: "My platform keeps crashing!"</p>
+                    <p>IT Support: "Did you turn it off and on again?"</p>
+                    <p>Trader: "You mean close my losing positions? NEVER!" 😅</p>
+                </div>
+            </section>
+
+            <!-- Chapter 4 -->
+            <section class="chapter">
+                <h1>Chapter 4: The Mathematics of Risk (Lot Sizes)</h1>
+                <p>Before you place a trade, you must determine <em>how much</em> to trade. In Forex, we buy and sell in "Lots".</p>
+
+                <div class="trading-tip">
+                    <strong>💡 The Golden Rule of Lot Sizing:</strong>
+                    <p>Never risk more than 1-2% of your account on a single trade. This isn't being scared—it's being smart. Even the best traders lose sometimes. The goal is to survive to trade another day!</p>
+                </div>
+
+                <h2>4.1 Understanding Lot Sizes</h2>
+                <ul>
+                    <li><strong>1.00 Lot (Standard):</strong> 1 pip movement ≈ $10 profit/loss. 💰</li>
+                    <li><strong>0.10 Lot (Mini):</strong> 1 pip movement ≈ $1 profit/loss. 💵</li>
+                    <li><strong>0.01 Lot (Micro):</strong> 1 pip movement ≈ $0.10 profit/loss. 🪙</li>
+                </ul>
+
+                <h2>4.2 Calculating Your Lot Size</h2>
+                <p><strong>Never guess.</strong> Use this formula to protect your capital.</p>
+
+                <div class="formula">
+                    <div class="formula-text">Lot Size = Risk Amount ($) ÷ [Stop Loss (pips) × Pip Value]</div>
+                </div>
+
+                <div class="example">
+                    <h3>📝 Real-World Example:</h3>
+                    <p>You have a <strong>$500 account</strong> and want to risk <strong>$10 (2%)</strong>. Your Stop Loss is <strong>20 pips</strong> away.</p>
+                    <p><strong>Calculation:</strong> $10 ÷ (20 pips × $10 pip value) = <strong>0.05 Lots</strong>.</p>
+                    <p><strong>Result:</strong> You trade 0.05 lots. If the trade hits your stop loss, you lose exactly $10. Not a penny more!</p>
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 Calculator Tip:</strong>
+                    <p>Use a lot size calculator (available free online or in MT5) until this becomes second nature. Accurate lot sizing is the difference between growing your account and blowing it up!</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Risk Management Humor 🎲</strong>
+                    <p>"I used to risk 50% per trade. Now I have a 100% chance of being broke!" - Anonymous Former Trader</p>
+                    <p><em>Don't be that guy. Use the formula!</em> 😎</p>
+                </div>
+            </section>
+
+            <!-- Comic Break 3 -->
+            <div class="comic-break">
+                <h3>🎭 Halfway There! Here's Your Reward</h3>
+                <p><em>Trading is serious business, but we can still have fun!</em></p>
+                <img src="public/assets/images/Gemini_Generated_Image_u3vbrlu3vbrlu3vb.png" alt="Trading Comic 3">
+            </div>
+
+            <!-- Chapter 5 -->
+            <section class="chapter">
+                <h1>Chapter 5: How to Place Trades on MT5</h1>
+                <p>There are two main ways to enter the market: <strong>Market Execution</strong> (Now) and <strong>Pending Orders</strong> (Later).</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Execution Strategy:</strong>
+                    <p>Use Market Orders when you see a setup NOW. Use Pending Orders when you have a specific price target and can't watch the charts 24/7. Smart traders use both!</p>
+                </div>
+
+                <h2>5.1 Placing a Market Order (Mobile App)</h2>
+                <div class="steps">
+                    <ol>
+                        <li>Go to the <strong>Quotes</strong> tab and tap the pair (e.g., GBPUSD).</li>
+                        <li>Tap <strong>Trade</strong> (or New Order).</li>
+                        <li><strong>Step A - Lot Size:</strong> Enter your calculated lot size in the top center (e.g., 0.10).</li>
+                        <li><strong>Step B - Stop Loss (SL):</strong> In the field with the Red line, enter the price where you want to exit if you are wrong.</li>
+                        <li><strong>Step C - Take Profit (TP):</strong> In the field with the Green line, enter the price where you want to take profit.</li>
+                        <li><strong>Step D - Execute:</strong> Tap the big <strong>Buy by Market</strong> or <strong>Sell by Market</strong> button.</li>
+                    </ol>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Never Trade Without a Stop Loss!</strong> Trading without a stop loss is like skydiving without a parachute. Sure, it feels free... until it doesn't!
+                </div>
+
+                <h2>5.2 Using Pending Orders</h2>
+                <p>Use these when you want to enter at a specific price, not the current price.</p>
+                <ul>
+                    <li><strong>Buy Limit:</strong> Price is currently <em>high</em>; you want to buy when it drops to a lower support level. 📉➡️📈</li>
+                    <li><strong>Sell Limit:</strong> Price is currently <em>low</em>; you want to sell when it rises to a resistance level. 📈➡️📉</li>
+                    <li><strong>Buy Stop:</strong> You want to buy only if the price breaks <em>up</em> through a resistance level. 🚀</li>
+                    <li><strong>Sell Stop:</strong> You want to sell only if the price breaks <em>down</em> through a support level. 📉</li>
+                </ul>
+
+                <div class="info">
+                    <strong>🎯 How to set:</strong> In the order window, tap "Market Execution" and change it to the pending order type. Enter the <strong>Price</strong> where you want the order to trigger, then set your SL and TP as normal.
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Order Type Humor 📝</strong>
+                    <p>Buy Stop, Sell Stop, Buy Limit, Sell Limit... Feeling confused?</p>
+                    <p>Remember: Limits are like shopping for discounts (buy low, sell high). Stops are for breakouts (jump on the train that's already moving)! 🚂</p>
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 Pending Order Pro Move:</strong>
+                    <p>Set pending orders before major news events if you expect volatility but aren't sure of the direction. Let the market come to you!</p>
+                </div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="chapter">
+                <h1>Chapter 6: Managing Trades (Stop Loss & Take Profit)</h1>
+                <p>A professional trader manages risk <em>after</em> the entry.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Trade Management Secret:</strong>
+                    <p>The entry is just 20% of the trade. The real money is made (or saved) in how you manage the position after entry. Never "set and forget" completely!</p>
+                </div>
+
+                <h2>6.1 Modifying Orders</h2>
+                <p>If the market moves in your favor, you may want to move your Stop Loss to your entry price (Break Even) to make the trade risk-free.</p>
+                <div class="steps">
+                    <p><strong>Mobile:</strong> Go to the <strong>Trade</strong> tab. Long-press the open position. Select <strong>Modify Position</strong>. Change the SL price and tap "Modify".</p>
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 Break-Even Strategy:</strong>
+                    <p>Once your trade is up 20-30 pips, consider moving your stop loss to break even. This way, worst case scenario, you exit with zero loss. Best case? The profits keep running! 🏃‍♂️💨</p>
+                </div>
+
+                <h2>6.2 Partial Closing (Scaling Out)</h2>
+                <p>You don't have to close the whole trade at once. You can secure some profit and let the rest run.</p>
+                <div class="steps">
+                    <ol>
+                        <li>Long-press the open trade and select <strong>Close Position</strong>.</li>
+                        <li><strong>Crucial Step:</strong> Before you tap the orange "Close with Profit" button, look at the <strong>Lot Size</strong> at the top.</li>
+                        <li>Change the lot size. If you opened 0.10, change it to 0.05.</li>
+                        <li>Tap <strong>Close</strong>.</li>
+                        <li><strong>Result:</strong> You have banked profit on half the trade, and 0.05 lots are still running in the market.</li>
+                    </ol>
+                </div>
+
+                <div class="example">
+                    <h3>💼 Professional Scaling Example:</h3>
+                    <p><strong>The Setup:</strong> You enter with 0.10 lots at 1.2000. Your target is 1.2100 (100 pips).</p>
+                    <p><strong>The Strategy:</strong></p>
+                    <ul>
+                        <li>At 1.2050 (+50 pips): Close 0.05 lots = $25 profit LOCKED IN</li>
+                        <li>Move SL to break even on remaining 0.05 lots</li>
+                        <li>Let the remaining 0.05 ride to 1.2100 or wherever it goes</li>
+                    </ul>
+                    <p><strong>The Psychology:</strong> You've already won. Now you're playing with the market's money! 😎</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Exit Strategy Humor 🚪</strong>
+                    <p>"I have three exit strategies: Take Profit, Stop Loss, and Panic Close."</p>
+                    <p><em>Guess which one I use most?</em> 😅</p>
+                    <p>Be honest with yourself, plan your exits, and stick to them!</p>
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 The 50% Rule:</strong>
+                    <p>When in doubt, take 50% profit at your first target and let 50% run with a trailing stop. This way you win psychologically (profit secured) and financially (catching big moves when they happen).</p>
+                </div>
+            </section>
+
+            <!-- Chapter 7 - Conclusion -->
+            <section class="conclusion">
+                <h1>Chapter 7: Conclusion</h1>
+                <p>You now possess the technical blueprint used by professional traders. You have a verified Exness account, a calibrated MT5 terminal, and the knowledge to calculate risk and execute orders precisely.</p>
+
+                <div class="next-steps">
+                    <h2 style="color: white; border-bottom: none; margin-top: 0;">🎯 Your Next Steps:</h2>
+                    <ol>
+                        <li><strong>Register</strong> via the Chido Forex Academy Link.</li>
+                        <li><strong>Verify</strong> your documents immediately.</li>
+                        <li><strong>Practice</strong> on a Demo or Cent account to master the Lot Size formula.</li>
+                        <li><strong>Execute</strong> your first trade with confidence.</li>
+                    </ol>
+                </div>
+
+                <!-- Free Signals Banner -->
+                <div class="free-signals-banner">
+                    <div class="free-signals-content">
+                        <div class="free-signals-icon">📱</div>
+                        <h3 class="free-signals-title">Get FREE Trading Signals!</h3>
+                        <p class="free-signals-text">Join our Telegram channel and start receiving professional trading signals at no cost. Perfect for beginners!</p>
+                        <a href="https://t.me/+gPAQmb3i4E45ODU0" target="_blank" class="free-signals-btn">
+                            <span>Join Free Telegram Channel</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="pricing-section">
+                    <h2 class="pricing-title">📚 Learn to Trade With Us</h2>
+                    <p class="pricing-subtitle">Choose the perfect plan to accelerate your trading journey</p>
+
+                    <div class="pricing-cards">
+                        <!-- Beginner Course -->
+                        <div class="pricing-card">
+                            <div class="pricing-name">Beginner Course</div>
+                            <div class="pricing-price">$50</div>
+                            <ul class="pricing-features">
+                                <li>Complete Beginner Course</li>
+                                <li>Trading Fundamentals</li>
+                                <li>1 Month Signals</li>
+                                <li>Zoom Meetings</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Get Started</a>
+                        </div>
+
+                        <!-- Full Course -->
+                        <div class="pricing-card">
+                            <div class="pricing-name">Full Course</div>
+                            <div class="pricing-price">$75</div>
+                            <ul class="pricing-features">
+                                <li>Complete Full Course</li>
+                                <li>Advanced Strategies</li>
+                                <li>2 Months Signals</li>
+                                <li>Priority Zoom Meetings</li>
+                                <li>Course Materials</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Enroll Now</a>
+                        </div>
+
+                        <!-- Full Course + Membership (FEATURED) -->
+                        <div class="pricing-card featured">
+                            <div class="pricing-name">Full Course + Membership</div>
+                            <div class="pricing-price">$120</div>
+                            <ul class="pricing-features">
+                                <li>Complete Full Course</li>
+                                <li>Advanced Strategies</li>
+                                <li>Premium Membership Access</li>
+                                <li>Unlimited Signals</li>
+                                <li>Private Trading Community</li>
+                                <li>Weekly Market Analysis</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Join Now</a>
+                        </div>
+
+                        <!-- VIP One-on-One -->
+                        <div class="pricing-card">
+                            <div class="pricing-name">VIP One-on-One</div>
+                            <div class="pricing-price">$180</div>
+                            <ul class="pricing-features">
+                                <li>Complete Full Course</li>
+                                <li>Personal Mentorship</li>
+                                <li>One-on-One Sessions</li>
+                                <li>Premium Membership</li>
+                                <li>Unlimited Signals</li>
+                                <li>24/7 Direct Support</li>
+                                <li>Personalized Strategy</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Go Premium</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trading-tip" style="background: rgba(255,255,255,0.15); border-left-color: white;">
+                    <strong style="color: white;">💡 Final Words of Wisdom:</strong>
+                    <p style="color: white; text-align: left;">"The market doesn't care about your feelings, your bills, or your dreams. It only responds to your discipline, your risk management, and your patience. Trade with your head, not your heart. Profit with ease!"</p>
+                </div>
+
+                <div style="margin: 40px 0;">
+                    <img src="public/assets/images/logo.png" alt="Profit With Ease" style="max-width: 200px; filter: brightness(0) invert(1);">
+                </div>
+
+                <h2 style="color: white; border-bottom: none; font-size: 2em; margin-top: 30px; font-family: 'Poppins', sans-serif;">Welcome to the Academy 🚀</h2>
+
+                <div class="trading-joke" style="background: rgba(255,255,255,0.1); border-left-color: var(--primary-green);">
+                    <strong style="color: white;">One Last Laugh for the Road 😄</strong>
+                    <p style="color: white; text-align: left;">Q: How many traders does it take to change a lightbulb?</p>
+                    <p style="color: white; text-align: left;">A: None. They'll just wait for a "bullish reversal pattern" and hope it fixes itself! 💡📈</p>
+                    <p style="color: white; text-align: left;"><em>Now go forth and trade smart!</em></p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all chapters and animated elements
+        document.querySelectorAll('.chapter, h1, h2, h3').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add typing effect to academy name
+        const academyName = document.querySelector('.academy-name');
+        if (academyName) {
+            const text = academyName.textContent;
+            academyName.textContent = '';
+            let i = 0;
+
+            setTimeout(() => {
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        academyName.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                typeWriter();
+            }, 500);
+        }
+
+        // Easter egg: Konami code for confetti
+        let konamiCode = [];
+        const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode.splice(-konamiPattern.length - 1, konamiCode.length - konamiPattern.length);
+
+            if (konamiCode.join('').includes(konamiPattern.join(''))) {
+                alert('🎉 BONUS TIP UNLOCKED! 🎉\n\n"The best trade is often the one you didn\'t take. Patience beats impulse every time!"\n\n- Chido Forex Academy');
+                konamiCode = [];
+            }
+        });
+    </script>
+</body>
+</html>
