@@ -6,7 +6,7 @@
     <title>Chido Forex Academy - The Definitive Guide to Exness & MT5 Mastery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
         * {
             margin: 0;
@@ -20,19 +20,15 @@
             --primary-blue: #0066ff;
             --dark-blue: #0047b3;
             --black: #0a0a0a;
-            --dark-gray: #1a1a1a;
             --white: #ffffff;
-            --light-gray: #f0f4f8;
-            --cream: #f4f1ea;
-            --paper: #fffef7;
+            --light-gray: #f8f9fa;
         }
 
         body {
-            font-family: 'Merriweather', serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.8;
             color: var(--black);
             background: linear-gradient(135deg, #1a1a1a 0%, #0a2540 100%);
-            overflow-x: hidden;
         }
 
         /* Loading Screen */
@@ -55,7 +51,6 @@
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-            z-index: -1;
         }
 
         .loading-logo {
@@ -89,600 +84,317 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Book Container */
-        .book-wrapper {
-            perspective: 2000px;
+        /* Main Container */
+        .main-container {
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px;
-            width: 100%;
-        }
-
-        .book-container {
-            position: relative;
-            width: 100%;
             max-width: 1400px;
-            background: var(--paper);
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                inset 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            display: flex;
-            min-height: 85vh;
-            overflow: hidden;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
         }
 
-        /* Table of Contents Sidebar */
-        .table-of-contents {
+        /* Sidebar */
+        .sidebar {
             width: 280px;
-            background: linear-gradient(180deg, #f8f6f0 0%, #ebe8dd 100%);
-            border-right: 3px solid var(--primary-green);
+            background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-blue) 100%);
             padding: 30px 20px;
-            overflow-y: auto;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             height: 100vh;
-            transition: transform 0.3s ease;
+            overflow-y: auto;
         }
 
-        .table-of-contents.hidden {
-            transform: translateX(-100%);
-        }
-
-        .toc-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+        .sidebar-header {
             color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .toc-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .toc-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 25px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-green);
-            padding-bottom: 10px;
-        }
-
-        .toc-item {
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.95em;
-            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .nav-item {
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        .toc-item:hover {
-            background: linear-gradient(90deg, rgba(0, 208, 132, 0.2), rgba(0, 102, 255, 0.2));
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
             transform: translateX(5px);
         }
 
-        .toc-item.active {
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            color: white;
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.3);
             font-weight: 600;
-            box-shadow: 0 3px 10px rgba(0, 208, 132, 0.3);
         }
 
-        .toc-item i {
-            font-size: 0.9em;
-            opacity: 0.7;
-        }
-
-        /* Book Content */
-        .book-content {
-            flex: 1;
-            padding: 50px 60px;
-            overflow-y: auto;
-            background: var(--paper);
-            position: relative;
-            min-height: 85vh;
-        }
-
-        .book-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
-        }
-
-        /* Page */
-        .page {
-            min-height: 100vh;
-            padding: 40px 0;
-            display: none;
-            animation: fadeIn 0.5s ease;
-            width: 100%;
-        }
-
-        .page.active {
-            display: block !important;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Page Number */
-        .page-number {
-            position: fixed;
-            bottom: 30px;
-            right: 60px;
-            font-family: 'Playfair Display', serif;
+        .nav-item i {
             font-size: 1.1em;
-            color: #666;
-            font-weight: 600;
         }
 
-        /* Typography */
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+            height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            margin-bottom: 80px;
+            padding-top: 20px;
+        }
+
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8em;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
             color: var(--primary-blue);
-            margin-bottom: 30px;
-            line-height: 1.2;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            margin-bottom: 20px;
+            border-bottom: 4px solid var(--primary-green);
+            padding-bottom: 10px;
         }
 
         h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.9em;
-            color: var(--dark-green);
-            margin: 35px 0 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::before {
-            content: '▶';
-            color: var(--primary-green);
-            font-size: 0.7em;
+            font-size: 1.8em;
+            color: var(--black);
+            margin: 30px 0 15px 0;
         }
 
         h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.4em;
-            color: #333;
-            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            margin: 20px 0 10px 0;
         }
 
         p {
-            margin-bottom: 20px;
-            font-size: 1.05em;
-            line-height: 1.9;
-            color: #333;
-            text-align: justify;
+            margin-bottom: 15px;
+            font-size: 1.1em;
         }
 
-        /* Trading Tips & Jokes */
-        .trading-tip, .trading-joke {
-            margin: 30px 0;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .trading-tip {
-            background: linear-gradient(135deg, #e6f9f3 0%, #cceeff 100%);
-            border-left: 6px solid var(--primary-green);
-        }
-
-        .trading-joke {
-            background: linear-gradient(135deg, #fff9e6 0%, #ffe6f0 100%);
-            border-left: 6px solid var(--primary-blue);
-        }
-
-        .trading-tip::before {
-            content: '💡';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 2.5em;
-            opacity: 0.2;
-        }
-
-        .trading-joke::before {
-            content: '😂';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 2.5em;
-            opacity: 0.2;
-        }
-
-        .trading-tip strong, .trading-joke strong {
-            display: block;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .trading-tip strong {
-            color: var(--dark-green);
-        }
-
-        .trading-joke strong {
-            color: var(--primary-blue);
-        }
-
-        /* Comic Break */
-        .comic-break {
-            text-align: center;
-            margin: 50px 0;
-            padding: 40px;
-            background: #f8f9fa;
-            border-radius: 15px;
-        }
-
-        .comic-break h3 {
-            color: var(--primary-green);
-            margin-bottom: 20px;
-        }
-
-        .comic-break img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            margin: 30px 0;
-            border-collapse: collapse;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        th {
-            background: linear-gradient(135deg, var(--dark-green), var(--primary-blue));
-            color: white;
-            padding: 18px;
-            text-align: left;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        td {
-            padding: 15px 18px;
-            border-bottom: 1px solid #eee;
-        }
-
-        tr:hover {
-            background: rgba(0, 208, 132, 0.05);
-        }
-
-        /* Lists */
         ul, ol {
             margin: 20px 0 20px 30px;
         }
 
         li {
-            margin-bottom: 12px;
-            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 1.05em;
         }
 
-        li::marker {
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-
-        /* Formula Box */
-        .formula {
-            background: linear-gradient(135deg, #0a2540, #1a3a5a);
-            border: 3px solid var(--primary-green);
-            border-radius: 10px;
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 208, 132, 0.2);
-        }
-
-        .formula-text {
-            font-family: 'Courier New', monospace;
-            font-size: 1.3em;
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-
-        /* Example Box */
-        .example {
-            background: linear-gradient(135deg, #e7f3ff, #f0f8ff);
-            border-left: 6px solid var(--primary-blue);
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.1);
-        }
-
-        /* Steps Box */
-        .steps {
-            background: #f8f9fa;
-            border: 2px solid var(--primary-green);
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-
-        /* Info/Warning Boxes */
-        .info, .warning {
+        /* Info Boxes */
+        .trading-tip {
+            background: linear-gradient(135deg, #e8f8f5 0%, #d4f1f4 100%);
+            border-left: 5px solid var(--primary-green);
             padding: 20px;
             margin: 25px 0;
-            border-radius: 10px;
-            border-left: 6px solid;
+            border-radius: 8px;
         }
 
-        .info {
-            background: linear-gradient(135deg, #d1f2eb, #d1ecf1);
-            border-left-color: var(--primary-blue);
+        .trading-tip strong {
+            color: var(--dark-green);
+            font-size: 1.1em;
+        }
+
+        .trading-joke {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .trading-joke strong {
+            color: #856404;
+            font-size: 1.1em;
         }
 
         .warning {
-            background: linear-gradient(135deg, #fff3cd, #ffe6e6);
-            border-left-color: #dc3545;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning strong {
+            color: #721c24;
+            font-size: 1.1em;
+        }
+
+        .info {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        /* Comic Break */
+        .comic-break {
+            text-align: center;
+            padding: 40px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .comic-break img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: var(--light-gray);
         }
 
         /* Pricing Section */
         .pricing-section {
             margin: 50px 0;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05), rgba(0, 102, 255, 0.05));
-            border-radius: 15px;
         }
 
-        .pricing-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
+        .telegram-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            color: var(--primary-blue);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,102,255,0.3);
+        }
+
+        .telegram-banner h2 {
+            color: white;
             margin-bottom: 15px;
         }
 
-        .pricing-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 40px;
+        .telegram-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
         }
 
-        .pricing-cards {
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 30px;
+            margin: 30px 0;
         }
 
         .pricing-card {
             background: white;
-            padding: 35px 25px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            position: relative;
-            border-top: 5px solid transparent;
+            border: 3px solid transparent;
         }
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
-            border-top-color: var(--primary-green);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
         .pricing-card.featured {
-            border: 3px solid var(--primary-green);
-            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05), rgba(0, 102, 255, 0.05));
+            border-color: var(--primary-green);
+            transform: scale(1.05);
         }
 
-        .pricing-card.featured::after {
-            content: '⭐ MOST POPULAR';
-            position: absolute;
-            top: 15px;
-            right: -35px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+        .pricing-card .badge {
+            background: var(--primary-green);
             color: white;
-            padding: 5px 40px;
-            font-size: 0.75em;
-            font-weight: bold;
-            transform: rotate(45deg);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .pricing-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3em;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85em;
             font-weight: 600;
-            color: var(--black);
+            display: inline-block;
             margin-bottom: 15px;
-            text-align: center;
         }
 
-        .pricing-price {
-            font-family: 'Playfair Display', serif;
+        .pricing-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
             font-size: 3em;
             font-weight: 700;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 20px 0;
-            padding: 0;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            color: #555;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-green);
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .pricing-btn {
-            display: block;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 208, 132, 0.4);
-        }
-
-        /* Free Signals Banner */
-        .free-signals-banner {
-            margin: 40px 0;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(0, 208, 132, 0.1), rgba(0, 102, 255, 0.1));
-            border: 3px solid var(--primary-green);
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .free-signals-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
             color: var(--primary-blue);
-            margin-bottom: 15px;
+            margin: 20px 0;
         }
 
-        .free-signals-text {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 25px;
+        .pricing-card ul {
+            list-style: none;
+            margin: 25px 0;
         }
 
-        .free-signals-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+        .pricing-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card li i {
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        .enroll-btn {
+            display: block;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 100%);
             color: white;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-        }
-
-        .free-signals-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 208, 132, 0.4);
-        }
-
-        /* Chapter Navigation */
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #ddd;
-        }
-
-        .chapter-nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             padding: 15px 30px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            color: white;
-            border: none;
             border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.05em;
-            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 208, 132, 0.3);
+            margin-top: 20px;
         }
 
-        .chapter-nav-btn:hover {
+        .enroll-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 208, 132, 0.5);
-        }
-
-        .chapter-nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .chapter-nav-btn i {
-            font-size: 1.2em;
+            box-shadow: 0 10px 20px rgba(0,102,255,0.3);
         }
 
         /* Scroll to Top */
@@ -690,15 +402,15 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            background: var(--primary-green);
             color: white;
-            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 208, 132, 0.4);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -711,64 +423,33 @@
         }
 
         .scroll-to-top:hover {
+            background: var(--dark-green);
             transform: translateY(-5px);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .table-of-contents {
-                position: fixed;
-                left: 0;
-                top: 0;
-                z-index: 999;
-                transform: translateX(-100%);
-            }
-
-            .table-of-contents.visible {
-                transform: translateX(0);
-            }
-
-            .toc-toggle {
-                display: block;
-            }
-
-            .book-content {
-                padding: 40px 30px;
-            }
-
-            h1 {
-                font-size: 2.2em;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .book-wrapper {
-                padding: 20px 10px;
+            .main-container {
+                flex-direction: column;
             }
 
-            .book-content {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .content {
                 padding: 30px 20px;
+                height: auto;
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
 
-            h2 {
-                font-size: 1.5em;
-            }
-
-            .pricing-cards {
+            .pricing-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .chapter-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .page-number {
-                right: 30px;
             }
         }
     </style>
@@ -776,561 +457,482 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <img src="public/assets/images/logo.png" alt="Logo" class="loading-logo">
-        <div class="loading-text">Loading Your Guide...</div>
+        <img src="public/assets/images/logo.png" alt="Profit With Ease Logo" class="loading-logo">
+        <div class="loading-text">Loading Your Trading Journey...</div>
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- TOC Toggle Button -->
-    <button class="toc-toggle" id="tocToggle">
-        <i class="fas fa-bars"></i>
-    </button>
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-book"></i> Contents
+            </div>
+            <a href="#welcome" class="nav-item" data-section="welcome">
+                <i class="fas fa-home"></i> Welcome
+            </a>
+            <a href="#chapter1" class="nav-item" data-section="chapter1">
+                <i class="fas fa-user-plus"></i> Ch 1: Registration
+            </a>
+            <a href="#chapter2" class="nav-item" data-section="chapter2">
+                <i class="fas fa-credit-card"></i> Ch 2: Account Types
+            </a>
+            <a href="#chapter3" class="nav-item" data-section="chapter3">
+                <i class="fas fa-download"></i> Ch 3: MetaTrader 5
+            </a>
+            <a href="#chapter4" class="nav-item" data-section="chapter4">
+                <i class="fas fa-calculator"></i> Ch 4: Risk & Lot Sizes
+            </a>
+            <a href="#chapter5" class="nav-item" data-section="chapter5">
+                <i class="fas fa-chart-line"></i> Ch 5: Placing Trades
+            </a>
+            <a href="#chapter6" class="nav-item" data-section="chapter6">
+                <i class="fas fa-tasks"></i> Ch 6: Managing Trades
+            </a>
+            <a href="#pricing" class="nav-item" data-section="pricing">
+                <i class="fas fa-graduation-cap"></i> Courses & Pricing
+            </a>
+            <a href="#conclusion" class="nav-item" data-section="conclusion">
+                <i class="fas fa-flag-checkered"></i> Conclusion
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content" id="mainContent">
+            <!-- WELCOME SECTION -->
+            <section id="welcome">
+                <h1>Preface: Welcome to the Markets</h1>
+                <p>Welcome to <strong>Chido Forex Academy</strong>. You are about to embark on a journey that transforms novices into disciplined market operators. In the modern financial landscape, the difference between success and failure often lies in the quality of your tools and your understanding of them.</p>
+
+                <p>This guide is your manual for professional competence. We have partnered with <strong>Exness</strong>, a global leader in retail brokerage, to provide you with the best trading conditions—instant withdrawals, low spreads, and powerful leverage. We will guide you through setting up your account correctly, managing your risk mathematically, and executing trades with precision on the <strong>MetaTrader 5 (MT5)</strong> platform.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Trading Wisdom:</strong>
+                    <p>Success in trading isn't about being right all the time—it's about managing risk so well that being wrong doesn't destroy you. The tools you'll learn here are your shield and sword in the market battlefield.</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Quick Laugh 😄</strong>
+                    <p>Why did the trader bring a ladder to the market? Because they heard the sky's the limit!</p>
+                    <p><em>(Spoiler: They learned about stop-losses the hard way!)</em></p>
+                </div>
+            </section>
+
+            <!-- CHAPTER 1 -->
+            <section id="chapter1">
+                <h1>Chapter 1: Registration and Account Setup</h1>
+                <p>The first step is establishing your professional trading identity. We use Exness because of its regulatory security and "better-than-market" conditions.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Pro Tip:</strong>
+                    <p>Take your time during registration! A small mistake in country selection can affect your payment methods forever. Measure twice, click once!</p>
+                </div>
+
+                <h2>1.1 Creating Your Personal Area</h2>
+                <p>To access the academy's specific trading benefits, you must register through our partner portal.</p>
+                <ol>
+                    <li><strong>Click the Official Registration Link:</strong> <a href="https://one.exnessonelink.com/a/33o13y13ih" target="_blank" style="color: var(--primary-blue);">https://one.exnessonelink.com/a/33o13y13ih</a></li>
+                    <li><strong>Country Selection:</strong> Be careful here. Select your current country of residence. This cannot be changed later.</li>
+                    <li><strong>Credentials:</strong> Enter a valid email and create a strong password.</li>
+                </ol>
+
+                <h2>1.2 The Economic Profile</h2>
+                <p>After your first login, Exness will ask for an "Economic Profile." This is a standard requirement for all regulated brokers. Answer honestly regarding your income and experience.</p>
+
+                <div class="trading-joke">
+                    <strong>Quick Laugh 😄</strong>
+                    <p>"I told my wife I'm a risk manager. She asked why our account is empty. I said, 'See? Zero risk!'"</p>
+                </div>
+
+                <h2>1.3 Verification (KYC) – The "Unlocking" Phase</h2>
+                <div class="warning">
+                    <strong>⚠️ Critical Alert:</strong> You cannot withdraw profits until you verify your identity. Do not delay this step!
+                </div>
+                <ul>
+                    <li><strong>Proof of Identity (POI):</strong> Upload a clear photo of your ID, Passport, or Driver's License.</li>
+                    <li><strong>Proof of Address (POA):</strong> Upload a utility bill or bank statement dated within the last 6 months.</li>
+                </ul>
+
+                <div class="trading-tip">
+                    <strong>💡 Verification Hack:</strong>
+                    <p>Complete your verification IMMEDIATELY after registration. Don't wait until you have profits sitting there that you can't withdraw!</p>
+                </div>
+
+                <div class="comic-break">
+                    <h3>🎨 Time for a Visual Break!</h3>
+                    <p><em>Even professional traders need to smile</em></p>
+                    <img src="public/assets/images/Gemini_Generated_Image_egb5mtegb5mtegb5.png" alt="Trading Comic 1">
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section id="chapter2">
+                <h1>Chapter 2: Choosing the Right Account Type</h1>
+                <p>Exness offers different accounts for different styles. For Chido Forex Academy students, we recommend starting with the Standard tier.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account Type</th>
+                            <th>Best For</th>
+                            <th>Spreads</th>
+                            <th>Min Deposit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Standard</strong></td>
+                            <td>Beginners & Small Accounts</td>
+                            <td>0.3 pips avg</td>
+                            <td>$1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pro</strong></td>
+                            <td>Scalpers & High-Frequency Traders</td>
+                            <td>From 0.1 pips</td>
+                            <td>$200</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Raw Spread</strong></td>
+                            <td>Advanced Traders & EAs</td>
+                            <td>From 0.0 pips</td>
+                            <td>$200</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="trading-tip">
+                    <strong>💡 Account Selection Strategy:</strong>
+                    <p>Start with Standard. Once you're consistently profitable for 3 months, upgrade to Pro or Raw Spread. Don't rush into premium accounts before you've proven your strategy works!</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Trader Humor 😂</strong>
+                    <p>"What's the difference between a new trader and a pizza? A pizza can feed a family of four!"</p>
+                    <p><em>(Don't be that trader—learn proper risk management!)</em></p>
+                </div>
+
+                <h2>2.1 Leverage: The Double-Edged Sword</h2>
+                <p>Exness offers leverage up to 1:Unlimited (yes, really). However, the academy recommends capping at <strong>1:100</strong> for risk control.</p>
+
+                <div class="warning">
+                    <strong>⚠️ Leverage Warning:</strong> High leverage amplifies BOTH gains AND losses. Use it wisely or it will use you up!
+                </div>
+
+                <div class="comic-break">
+                    <h3>🎨 Visual Break #2</h3>
+                    <p><em>Take a breath, we're halfway through the setup!</em></p>
+                    <img src="public/assets/images/Gemini_Generated_Image_egb5mtegb5mtegb6.png" alt="Trading Comic 2">
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section id="chapter3">
+                <h1>Chapter 3: Setting Up MetaTrader 5 (MT5)</h1>
+                <p>MT5 is your cockpit. It is where analysis meets execution.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Platform Power Move:</strong>
+                    <p>Download MT5 on BOTH mobile and desktop. Your phone for monitoring on-the-go, your computer for serious analysis.</p>
+                </div>
+
+                <h2>3.1 Installation</h2>
+                <ol>
+                    <li><strong>Desktop:</strong> Download from <a href="https://www.metatrader5.com/en/download" target="_blank" style="color: var(--primary-blue);">metatrader5.com</a></li>
+                    <li><strong>Mobile:</strong> Download "MetaTrader 5" from App Store or Google Play</li>
+                </ol>
+
+                <h2>3.2 Logging Into MT5</h2>
+                <p>You'll need three things from your Exness dashboard:</p>
+                <ul>
+                    <li><strong>Server:</strong> Usually "Exness-MT5Trial" or similar</li>
+                    <li><strong>Login:</strong> Your MT5 account number</li>
+                    <li><strong>Password:</strong> The one you set during account creation</li>
+                </ul>
+
+                <div class="trading-tip">
+                    <strong>💡 MT5 Mastery Tip:</strong>
+                    <p>Customize your charts! Right-click on a chart → Properties → Set background to black, candles to green/red. Your eyes will thank you after hours of analysis!</p>
+                </div>
+
+                <h2>3.3 Essential MT5 Features</h2>
+                <ul>
+                    <li><strong>Market Watch:</strong> View all tradable instruments</li>
+                    <li><strong>Navigator:</strong> Access accounts, indicators, and Expert Advisors</li>
+                    <li><strong>Toolbox:</strong> Monitor open trades, account history, and alerts</li>
+                </ul>
+
+                <div class="trading-joke">
+                    <strong>MT5 Humor 😄</strong>
+                    <p>"Why do traders love MT5? Because it's the only platform that doesn't judge you for opening 50 charts at once!"</p>
+                </div>
+            </section>
+
+            <!-- CHAPTER 4 -->
+            <section id="chapter4">
+                <h1>Chapter 4: The Mathematics of Risk (Lot Sizes)</h1>
+                <p>Before you place a trade, you must determine <em>how much</em> to trade. In Forex, we buy and sell in "Lots".</p>
+
+                <div class="trading-tip">
+                    <strong>💡 The Golden Rule:</strong>
+                    <p>Never risk more than 1-2% of your account on a single trade. This isn't being scared—it's being smart!</p>
+                </div>
+
+                <h2>4.1 Understanding Lot Sizes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lot Type</th>
+                            <th>Units</th>
+                            <th>Example (EUR/USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Standard Lot</strong></td>
+                            <td>100,000 units</td>
+                            <td>1.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mini Lot</strong></td>
+                            <td>10,000 units</td>
+                            <td>0.10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Micro Lot</strong></td>
+                            <td>1,000 units</td>
+                            <td>0.01</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>4.2 Calculating Your Position Size</h2>
+                <p><strong>Formula:</strong> Lot Size = (Account Balance × Risk %) ÷ (Stop Loss in Pips × Pip Value)</p>
+
+                <div class="info">
+                    <strong>Example:</strong>
+                    <ul>
+                        <li>Account Balance: $1,000</li>
+                        <li>Risk: 1% = $10</li>
+                        <li>Stop Loss: 50 pips</li>
+                        <li>Pip Value (for 0.01 lot): $0.10</li>
+                    </ul>
+                    <p><strong>Calculation:</strong> $10 ÷ (50 × $0.10) = 2 micro lots (0.02)</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Risk Management Joke 😂</strong>
+                    <p>"What's the difference between a gambler and a trader? About 1-2% risk per trade!"</p>
+                </div>
+
+                <div class="comic-break">
+                    <h3>🎨 Final Comic Break!</h3>
+                    <p><em>You've earned it—almost at the execution phase!</em></p>
+                    <img src="public/assets/images/Gemini_Generated_Image_egb5mtegb5mtegb7.png" alt="Trading Comic 3">
+                </div>
+            </section>
+
+            <!-- CHAPTER 5 -->
+            <section id="chapter5">
+                <h1>Chapter 5: How to Place Trades on MT5</h1>
+                <p>There are two main ways to enter the market: <strong>Market Execution</strong> (Now) and <strong>Pending Orders</strong> (Later).</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Execution Strategy:</strong>
+                    <p>Use Market Orders when you see a setup NOW. Use Pending Orders when you have a specific price target and can't watch the charts 24/7.</p>
+                </div>
+
+                <h2>5.1 Market Execution (Instant Entry)</h2>
+                <ol>
+                    <li>Right-click on a chart → <strong>Trading</strong> → <strong>New Order</strong></li>
+                    <li>Type: Select <strong>"Market Execution"</strong></li>
+                    <li>Volume: Enter your lot size (e.g., 0.01 for micro lot)</li>
+                    <li>Stop Loss & Take Profit: Set your exit levels</li>
+                    <li>Click <strong>Buy</strong> or <strong>Sell</strong></li>
+                </ol>
+
+                <h2>5.2 Pending Orders (Set & Forget)</h2>
+                <p>Types of pending orders:</p>
+                <ul>
+                    <li><strong>Buy Limit:</strong> Buy when price drops to your target</li>
+                    <li><strong>Sell Limit:</strong> Sell when price rises to your target</li>
+                    <li><strong>Buy Stop:</strong> Buy when price breaks above resistance</li>
+                    <li><strong>Sell Stop:</strong> Sell when price breaks below support</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>⚠️ Execution Alert:</strong> Always double-check your lot size before clicking Buy/Sell. One extra zero can wipe out your account!
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Trading Reality 😅</strong>
+                    <p>"Why do traders use pending orders? Because watching the charts 24/7 is a great way to ruin your marriage!"</p>
+                </div>
+            </section>
+
+            <!-- CHAPTER 6 -->
+            <section id="chapter6">
+                <h1>Chapter 6: Managing Trades (Stop Loss & Take Profit)</h1>
+                <p>A professional trader manages risk <em>after</em> the entry.</p>
+
+                <div class="trading-tip">
+                    <strong>💡 Trade Management Secret:</strong>
+                    <p>The entry is just 20% of the trade. The real money is made (or saved) in how you manage the position after entry!</p>
+                </div>
+
+                <h2>6.1 Stop Loss (SL) – Your Safety Net</h2>
+                <p>A Stop Loss is a pre-set exit point that closes your trade automatically if the market moves against you.</p>
+
+                <div class="warning">
+                    <strong>⚠️ Non-Negotiable Rule:</strong> NEVER trade without a Stop Loss. Ever. No exceptions. Not even "just this once."
+                </div>
+
+                <p><strong>How to Set a Stop Loss:</strong></p>
+                <ol>
+                    <li>Identify support/resistance levels</li>
+                    <li>Place SL 5-10 pips beyond these levels</li>
+                    <li>Ensure the SL respects your 1-2% risk rule</li>
+                </ol>
+
+                <h2>6.2 Take Profit (TP) – Lock in Gains</h2>
+                <p>A Take Profit automatically closes your trade when it reaches your profit target.</p>
+
+                <p><strong>TP Strategy:</strong> Use a minimum 1:2 risk-reward ratio. If you risk 50 pips, aim for 100+ pips profit.</p>
+
+                <div class="info">
+                    <strong>Pro Move: Trailing Stop</strong>
+                    <p>As your trade moves into profit, move your SL to break-even, then trail it behind price. This locks in profits while giving the trade room to run!</p>
+                </div>
+
+                <div class="trading-joke">
+                    <strong>Stop Loss Wisdom 😂</strong>
+                    <p>"What's the trader's favorite movie? 'Stop! Or My Mom Will Shoot (My Account)!'"</p>
+                </div>
+            </section>
+
+            <!-- PRICING SECTION -->
+            <section id="pricing">
+                <h1>Learn to Trade With Us</h1>
+
+                <!-- Free Telegram Banner -->
+                <div class="telegram-banner">
+                    <h2><i class="fab fa-telegram"></i> Get FREE Trading Signals!</h2>
+                    <p>Join our Telegram channel and receive daily trading signals, market analysis, and live trade alerts—completely FREE!</p>
+                    <a href="https://t.me/+gPAQmb3i4E45ODU0" target="_blank" class="telegram-btn">
+                        <i class="fab fa-telegram"></i> Join Free Signals Channel
+                    </a>
+                </div>
+
+                <div class="pricing-section">
+                    <h2>Choose Your Learning Path</h2>
+                    <div class="pricing-grid">
+                        <!-- Beginner Course -->
+                        <div class="pricing-card">
+                            <h3>Beginner Course</h3>
+                            <div class="price">$50</div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Forex Trading Basics</li>
+                                <li><i class="fas fa-check"></i> Platform Setup & Navigation</li>
+                                <li><i class="fas fa-check"></i> Risk Management Fundamentals</li>
+                                <li><i class="fas fa-check"></i> 1 Month Free Signals</li>
+                                <li><i class="fas fa-check"></i> Zoom Meetings</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz" target="_blank" class="enroll-btn">Enroll Now</a>
+                        </div>
+
+                        <!-- Full Course -->
+                        <div class="pricing-card">
+                            <h3>Full Course</h3>
+                            <div class="price">$75</div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete Trading Curriculum</li>
+                                <li><i class="fas fa-check"></i> Advanced Strategy Training</li>
+                                <li><i class="fas fa-check"></i> Technical & Fundamental Analysis</li>
+                                <li><i class="fas fa-check"></i> 2 Months Free Signals</li>
+                                <li><i class="fas fa-check"></i> Zoom Meetings</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz" target="_blank" class="enroll-btn">Enroll Now</a>
+                        </div>
+
+                        <!-- Full Course + Membership (FEATURED) -->
+                        <div class="pricing-card featured">
+                            <span class="badge">MOST POPULAR</span>
+                            <h3>Full Course + Membership</h3>
+                            <div class="price">$120</div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete Trading Curriculum</li>
+                                <li><i class="fas fa-check"></i> Lifetime Community Access</li>
+                                <li><i class="fas fa-check"></i> Weekly Live Trading Sessions</li>
+                                <li><i class="fas fa-check"></i> Unlimited Signals</li>
+                                <li><i class="fas fa-check"></i> Priority Zoom Meetings</li>
+                                <li><i class="fas fa-check"></i> Trade Review & Feedback</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz" target="_blank" class="enroll-btn">Enroll Now</a>
+                        </div>
+
+                        <!-- Full Course + One-on-One -->
+                        <div class="pricing-card">
+                            <h3>Full Course + One-on-One</h3>
+                            <div class="price">$180</div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete Trading Curriculum</li>
+                                <li><i class="fas fa-check"></i> Personal Mentor Assigned</li>
+                                <li><i class="fas fa-check"></i> One-on-One Zoom Calls</li>
+                                <li><i class="fas fa-check"></i> Customized Trading Plan</li>
+                                <li><i class="fas fa-check"></i> Unlimited Signals</li>
+                                <li><i class="fas fa-check"></i> 24/7 Support Access</li>
+                            </ul>
+                            <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz" target="_blank" class="enroll-btn">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCLUSION -->
+            <section id="conclusion">
+                <h1>Chapter 7: Conclusion</h1>
+                <p>You now possess the technical blueprint used by professional traders. You have a verified Exness account, a calibrated MT5 terminal, and the knowledge to calculate risk and execute orders precisely.</p>
+
+                <div class="info">
+                    <h3 style="margin-top: 0;">🎯 Your Next Steps:</h3>
+                    <ol>
+                        <li><strong>Register</strong> via the Chido Forex Academy Link.</li>
+                        <li><strong>Verify</strong> your documents immediately.</li>
+                        <li><strong>Download</strong> MT5 on desktop and mobile.</li>
+                        <li><strong>Practice</strong> on a demo account for at least 30 days.</li>
+                        <li><strong>Enroll</strong> in a Chido Forex Academy course for guided learning.</li>
+                    </ol>
+                </div>
+
+                <div class="trading-tip">
+                    <strong>💡 Final Wisdom:</strong>
+                    <p>The market rewards patience, discipline, and risk management. Your edge isn't in predicting every move—it's in controlling your losses and letting your winners run. Trade small, think big, and compound consistently.</p>
+                </div>
+
+                <div class="telegram-banner">
+                    <h2>🚀 Ready to Start Your Journey?</h2>
+                    <p>Join thousands of traders learning to profit with ease. Connect with us today!</p>
+                    <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz" target="_blank" class="telegram-btn">
+                        <i class="fab fa-whatsapp"></i> Join WhatsApp Community
+                    </a>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px; padding: 40px; background: var(--light-gray); border-radius: 15px;">
+                    <img src="public/assets/images/logo.png" alt="Profit With Ease" style="max-width: 200px; margin-bottom: 20px;">
+                    <h2 style="color: var(--primary-blue);">Profit With Ease</h2>
+                    <p style="font-size: 1.2em; margin: 20px 0;">Your journey to financial freedom starts here.</p>
+                    <p><strong>May your stop-losses be tight and your take-profits be generous!</strong></p>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Book Wrapper -->
-    <div class="book-wrapper">
-        <div class="book-container">
-            <!-- Table of Contents -->
-            <div class="table-of-contents" id="toc">
-                <div class="toc-header">
-                    <i class="fas fa-book"></i> Contents
-                </div>
-                <div class="toc-item active" data-page="0">
-                    <i class="fas fa-home"></i> Welcome
-                </div>
-                <div class="toc-item" data-page="1">
-                    <i class="fas fa-user-plus"></i> Ch 1: Registration
-                </div>
-                <div class="toc-item" data-page="2">
-                    <i class="fas fa-id-card"></i> Ch 2: Account Types
-                </div>
-                <div class="toc-item" data-page="3">
-                    <i class="fas fa-download"></i> Ch 3: MetaTrader 5
-                </div>
-                <div class="toc-item" data-page="4">
-                    <i class="fas fa-calculator"></i> Ch 4: Risk & Lot Sizes
-                </div>
-                <div class="toc-item" data-page="5">
-                    <i class="fas fa-chart-line"></i> Ch 5: Placing Trades
-                </div>
-                <div class="toc-item" data-page="6">
-                    <i class="fas fa-tasks"></i> Ch 6: Managing Trades
-                </div>
-                <div class="toc-item" data-page="7">
-                    <i class="fas fa-graduation-cap"></i> Ch 7: Conclusion
-                </div>
-            </div>
-
-            <!-- Book Content -->
-            <div class="book-content" id="bookContent">
-                <!-- Page Number -->
-                <div class="page-number" id="pageNumber">Page 1</div>
-
-                <!-- PAGE 0: PREFACE -->
-                <div class="page active" data-page="0">
-                    <h1>Preface: Welcome to the Markets</h1>
-                    <p>Welcome to <strong>Chido Forex Academy</strong>. You are about to embark on a journey that transforms novices into disciplined market operators. In the modern financial landscape, the difference between success and failure often lies in the quality of your tools and your understanding of them.</p>
-                    <p>This guide is your manual for professional competence. We have partnered with <strong>Exness</strong>, a global leader in retail brokerage, to provide you with the best trading conditions—instant withdrawals, low spreads, and powerful leverage. We will guide you through setting up your account correctly, managing your risk mathematically, and executing trades with precision on the <strong>MetaTrader 5 (MT5)</strong> platform.</p>
-
-                    <div class="trading-joke">
-                        <strong>Trading Humor Break 😂</strong>
-                        <p>Why did the trader bring a ladder to the market? Because they heard the sky's the limit! 📈</p>
-                        <p><em>(Spoiler: They learned about stop-losses the hard way!)</em></p>
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()" disabled>
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 1: CHAPTER 1 -->
-                <div class="page" data-page="1">
-                    <h1>Chapter 1: Registration and Account Setup</h1>
-                    <p>The first step is establishing your professional trading identity. We use Exness because of its regulatory security and "better-than-market" conditions.</p>
-
-                    <div class="trading-tip">
-                        <strong>💡 Pro Tip:</strong>
-                        <p>Take your time during registration! A small mistake in country selection can affect your payment methods forever. Measure twice, click once!</p>
-                    </div>
-
-                    <h2>1.1 Creating Your Personal Area</h2>
-                    <p>To access the academy's specific trading benefits, you must register through our partner portal.</p>
-                    <ol>
-                        <li><strong>Click the Official Registration Link:</strong> <a href="https://one.exnessonelink.com/a/33o13y13ih" target="_blank" style="color: var(--primary-blue);">https://one.exnessonelink.com/a/33o13y13ih</a></li>
-                        <li><strong>Country Selection:</strong> Be careful here. Select your current country of residence. This cannot be changed later.</li>
-                        <li><strong>Credentials:</strong> Enter a valid email and create a strong password.</li>
-                    </ol>
-
-                    <h2>1.2 The Economic Profile</h2>
-                    <p>After your first login, Exness will ask for an "Economic Profile." This is a standard requirement for all regulated brokers. Answer honestly regarding your income and experience.</p>
-
-                    <div class="trading-joke">
-                        <strong>Quick Laugh 😄</strong>
-                        <p>"I told my wife I'm a risk manager. She asked why our account is empty. I said, 'See? Zero risk!'"</p>
-                    </div>
-
-                    <h2>1.3 Verification (KYC) – The "Unlocking" Phase</h2>
-                    <div class="warning">
-                        <strong>⚠️ Critical Alert:</strong> You cannot withdraw profits until you verify your identity. Do not delay this step!
-                    </div>
-                    <ul>
-                        <li><strong>Proof of Identity (POI):</strong> Upload a clear photo of your ID, Passport, or Driver's License.</li>
-                        <li><strong>Proof of Address (POA):</strong> Upload a utility bill or bank statement dated within the last 6 months.</li>
-                    </ul>
-
-                    <div class="trading-tip">
-                        <strong>💡 Verification Hack:</strong>
-                        <p>Complete your verification IMMEDIATELY after registration. Don't wait until you have profits sitting there that you can't withdraw!</p>
-                    </div>
-
-                    <div class="comic-break">
-                        <h3>🎨 Time for a Visual Break!</h3>
-                        <p><em>Even professional traders need to smile</em></p>
-                        <img src="public/assets/images/Gemini_Generated_Image_egb5mtegb5mtegb5.png" alt="Trading Comic 1">
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 2: CHAPTER 2 -->
-                <div class="page" data-page="2">
-                    <h1>Chapter 2: Choosing the Right Account Type</h1>
-                    <p>Exness offers different accounts for different styles. For Chido Forex Academy students, we recommend starting with the Standard tier.</p>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Account Type</th>
-                                <th>Best For</th>
-                                <th>Min. Deposit</th>
-                                <th>Features</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Standard</strong></td>
-                                <td>Most Traders</td>
-                                <td>~$10</td>
-                                <td>Spread-only. Great for swing trading.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Standard Cent</strong></td>
-                                <td>Beginners</td>
-                                <td>~$10</td>
-                                <td>Balance in cents. Perfect for practice.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Raw Spread</strong></td>
-                                <td>Scalpers</td>
-                                <td>~$200</td>
-                                <td>0.0 spreads + Commission.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Pro</strong></td>
-                                <td>Experts</td>
-                                <td>~$200</td>
-                                <td>Instant Execution. 0 Commission.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="info">
-                        <strong>🎯 Recommendation:</strong> Open a <strong>Standard</strong> account for your main trading, or a <strong>Standard Cent</strong> account if depositing less than $50.
-                    </div>
-
-                    <div class="trading-tip">
-                        <strong>💡 Account Selection Wisdom:</strong>
-                        <p>The Standard Cent account is like training wheels for your bicycle. You can fall without breaking bones!</p>
-                    </div>
-
-                    <div class="trading-joke">
-                        <strong>Market Humor 📊</strong>
-                        <p>Q: What's the difference between a trader and a large pizza?</p>
-                        <p>A: A large pizza can feed a family of four! 😂</p>
-                        <p><em>(Just kidding! With proper risk management, you'll do great!)</em></p>
-                    </div>
-
-                    <div class="comic-break">
-                        <h3>😄 Laughter Break - Recharge Your Brain!</h3>
-                        <img src="public/assets/images/Gemini_Generated_Image_k8xasik8xasik8xa.png" alt="Trading Comic 2">
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 3: CHAPTER 3 -->
-                <div class="page" data-page="3">
-                    <h1>Chapter 3: Setting Up MetaTrader 5 (MT5)</h1>
-                    <p>MT5 is your cockpit. It is where analysis meets execution.</p>
-
-                    <div class="trading-tip">
-                        <strong>💡 Platform Power Move:</strong>
-                        <p>Download MT5 on BOTH mobile and desktop. Your phone for monitoring on-the-go, your computer for serious analysis.</p>
-                    </div>
-
-                    <h2>3.1 Downloading the Platform</h2>
-                    <ul>
-                        <li><strong>Mobile:</strong> Download "MetaTrader 5" from the App Store or Google Play.</li>
-                        <li><strong>PC:</strong> Download the MT5 terminal directly from the Exness website to get the correct server configurations.</li>
-                    </ul>
-
-                    <h2>3.2 Logging In</h2>
-                    <div class="steps">
-                        <ol>
-                            <li>Go to your Exness Personal Area and find your trading account.</li>
-                            <li>Click "Trade" to see your <strong>Server</strong> (e.g., <code>Exness-MT5Real9</code>) and <strong>Login ID</strong>.</li>
-                            <li>Open MT5, go to <strong>Manage Accounts > +</strong>.</li>
-                            <li>Search for "Exness Technologies Ltd".</li>
-                            <li>Enter your Login ID, Password, and select the exact Server shown in your dashboard.</li>
-                        </ol>
-                    </div>
-
-                    <div class="warning">
-                        <strong>⚠️ Common Mistake:</strong> Selecting the wrong server is like trying to unlock your house with your car key. Triple-check that server name!
-                    </div>
-
-                    <div class="trading-joke">
-                        <strong>Tech Humor 💻</strong>
-                        <p>Trader: "My platform keeps crashing!"</p>
-                        <p>IT Support: "Did you turn it off and on again?"</p>
-                        <p>Trader: "You mean close my losing positions? NEVER!" 😅</p>
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 4: CHAPTER 4 -->
-                <div class="page" data-page="4">
-                    <h1>Chapter 4: The Mathematics of Risk (Lot Sizes)</h1>
-                    <p>Before you place a trade, you must determine <em>how much</em> to trade. In Forex, we buy and sell in "Lots".</p>
-
-                    <div class="trading-tip">
-                        <strong>💡 The Golden Rule:</strong>
-                        <p>Never risk more than 1-2% of your account on a single trade. This isn't being scared—it's being smart!</p>
-                    </div>
-
-                    <h2>4.1 Understanding Lot Sizes</h2>
-                    <ul>
-                        <li><strong>1.00 Lot (Standard):</strong> 1 pip movement ≈ $10 profit/loss. 💰</li>
-                        <li><strong>0.10 Lot (Mini):</strong> 1 pip movement ≈ $1 profit/loss. 💵</li>
-                        <li><strong>0.01 Lot (Micro):</strong> 1 pip movement ≈ $0.10 profit/loss. 🪙</li>
-                    </ul>
-
-                    <h2>4.2 Calculating Your Lot Size</h2>
-                    <p><strong>Never guess.</strong> Use this formula to protect your capital.</p>
-
-                    <div class="formula">
-                        <div class="formula-text">Lot Size = Risk Amount ($) ÷ [Stop Loss (pips) × Pip Value]</div>
-                    </div>
-
-                    <div class="example">
-                        <h3>📝 Real-World Example:</h3>
-                        <p>You have a <strong>$500 account</strong> and want to risk <strong>$10 (2%)</strong>. Your Stop Loss is <strong>20 pips</strong> away.</p>
-                        <p><strong>Calculation:</strong> $10 ÷ (20 pips × $10 pip value) = <strong>0.05 Lots</strong>.</p>
-                        <p><strong>Result:</strong> You trade 0.05 lots. If the trade hits your stop loss, you lose exactly $10. Not a penny more!</p>
-                    </div>
-
-                    <div class="trading-tip">
-                        <strong>💡 Calculator Tip:</strong>
-                        <p>Use a lot size calculator (available free online or in MT5) until this becomes second nature!</p>
-                    </div>
-
-                    <div class="trading-joke">
-                        <strong>Risk Management Humor 🎲</strong>
-                        <p>"I used to risk 50% per trade. Now I have a 100% chance of being broke!" - Anonymous Former Trader</p>
-                        <p><em>Don't be that guy. Use the formula!</em> 😎</p>
-                    </div>
-
-                    <div class="comic-break">
-                        <h3>🎭 Halfway There! Here's Your Reward</h3>
-                        <p><em>Trading is serious business, but we can still have fun!</em></p>
-                        <img src="public/assets/images/Gemini_Generated_Image_u3vbrlu3vbrlu3vb.png" alt="Trading Comic 3">
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 5: CHAPTER 5 -->
-                <div class="page" data-page="5">
-                    <h1>Chapter 5: How to Place Trades on MT5</h1>
-                    <p>There are two main ways to enter the market: <strong>Market Execution</strong> (Now) and <strong>Pending Orders</strong> (Later).</p>
-
-                    <div class="trading-tip">
-                        <strong>💡 Execution Strategy:</strong>
-                        <p>Use Market Orders when you see a setup NOW. Use Pending Orders when you have a specific price target and can't watch the charts 24/7.</p>
-                    </div>
-
-                    <h2>5.1 Placing a Market Order (Mobile App)</h2>
-                    <div class="steps">
-                        <ol>
-                            <li>Go to the <strong>Quotes</strong> tab and tap the pair (e.g., GBPUSD).</li>
-                            <li>Tap <strong>Trade</strong> (or New Order).</li>
-                            <li><strong>Step A - Lot Size:</strong> Enter your calculated lot size (e.g., 0.10).</li>
-                            <li><strong>Step B - Stop Loss (SL):</strong> Enter the price where you want to exit if wrong.</li>
-                            <li><strong>Step C - Take Profit (TP):</strong> Enter the price where you want to take profit.</li>
-                            <li><strong>Step D - Execute:</strong> Tap <strong>Buy by Market</strong> or <strong>Sell by Market</strong>.</li>
-                        </ol>
-                    </div>
-
-                    <div class="warning">
-                        <strong>⚠️ Never Trade Without a Stop Loss!</strong> Trading without a stop loss is like skydiving without a parachute!
-                    </div>
-
-                    <h2>5.2 Using Pending Orders</h2>
-                    <ul>
-                        <li><strong>Buy Limit:</strong> Price is high; you want to buy when it drops to support. 📉➡️📈</li>
-                        <li><strong>Sell Limit:</strong> Price is low; you want to sell when it rises to resistance. 📈➡️📉</li>
-                        <li><strong>Buy Stop:</strong> Buy only if price breaks up through resistance. 🚀</li>
-                        <li><strong>Sell Stop:</strong> Sell only if price breaks down through support. 📉</li>
-                    </ul>
-
-                    <div class="trading-joke">
-                        <strong>Order Type Humor 📝</strong>
-                        <p>Buy Stop, Sell Stop, Buy Limit, Sell Limit... Feeling confused?</p>
-                        <p>Remember: Limits are like shopping for discounts (buy low, sell high). Stops are for breakouts (jump on the train that's already moving)! 🚂</p>
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 6: CHAPTER 6 -->
-                <div class="page" data-page="6">
-                    <h1>Chapter 6: Managing Trades (Stop Loss & Take Profit)</h1>
-                    <p>A professional trader manages risk <em>after</em> the entry.</p>
-
-                    <div class="trading-tip">
-                        <strong>💡 Trade Management Secret:</strong>
-                        <p>The entry is just 20% of the trade. The real money is made (or saved) in how you manage the position after entry!</p>
-                    </div>
-
-                    <h2>6.1 Modifying Orders</h2>
-                    <p>If the market moves in your favor, you may want to move your Stop Loss to your entry price (Break Even) to make the trade risk-free.</p>
-                    <div class="steps">
-                        <p><strong>Mobile:</strong> Go to the <strong>Trade</strong> tab. Long-press the open position. Select <strong>Modify Position</strong>. Change the SL price and tap "Modify".</p>
-                    </div>
-
-                    <div class="trading-tip">
-                        <strong>💡 Break-Even Strategy:</strong>
-                        <p>Once your trade is up 20-30 pips, consider moving your stop loss to break even. Worst case? You exit with zero loss. Best case? The profits keep running! 🏃‍♂️💨</p>
-                    </div>
-
-                    <h2>6.2 Partial Closing (Scaling Out)</h2>
-                    <p>You don't have to close the whole trade at once. You can secure some profit and let the rest run.</p>
-                    <div class="steps">
-                        <ol>
-                            <li>Long-press the open trade and select <strong>Close Position</strong>.</li>
-                            <li><strong>Crucial Step:</strong> Before tapping "Close with Profit", look at the <strong>Lot Size</strong>.</li>
-                            <li>Change the lot size. If you opened 0.10, change it to 0.05.</li>
-                            <li>Tap <strong>Close</strong>.</li>
-                            <li><strong>Result:</strong> You've banked profit on half the trade, and 0.05 lots are still running!</li>
-                        </ol>
-                    </div>
-
-                    <div class="example">
-                        <h3>💼 Professional Scaling Example:</h3>
-                        <p><strong>The Setup:</strong> You enter with 0.10 lots at 1.2000. Your target is 1.2100 (100 pips).</p>
-                        <p><strong>The Strategy:</strong></p>
-                        <ul>
-                            <li>At 1.2050 (+50 pips): Close 0.05 lots = $25 profit LOCKED IN</li>
-                            <li>Move SL to break even on remaining 0.05 lots</li>
-                            <li>Let the remaining 0.05 ride to 1.2100 or wherever it goes</li>
-                        </ul>
-                        <p><strong>The Psychology:</strong> You've already won. Now you're playing with the market's money! 😎</p>
-                    </div>
-
-                    <div class="trading-joke">
-                        <strong>Exit Strategy Humor 🚪</strong>
-                        <p>"I have three exit strategies: Take Profit, Stop Loss, and Panic Close."</p>
-                        <p><em>Guess which one I use most?</em> 😅</p>
-                    </div>
-
-                    <div class="trading-tip">
-                        <strong>💡 The 50% Rule:</strong>
-                        <p>When in doubt, take 50% profit at your first target and let 50% run with a trailing stop!</p>
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="nextPage()">
-                            Next <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PAGE 7: CHAPTER 7 - CONCLUSION -->
-                <div class="page" data-page="7">
-                    <h1>Chapter 7: Conclusion</h1>
-                    <p>You now possess the technical blueprint used by professional traders. You have a verified Exness account, a calibrated MT5 terminal, and the knowledge to calculate risk and execute orders precisely.</p>
-
-                    <div class="info">
-                        <h3 style="margin-top: 0;">🎯 Your Next Steps:</h3>
-                        <ol>
-                            <li><strong>Register</strong> via the Chido Forex Academy Link.</li>
-                            <li><strong>Verify</strong> your documents immediately.</li>
-                            <li><strong>Practice</strong> on a Demo or Cent account to master the Lot Size formula.</li>
-                            <li><strong>Execute</strong> your first trade with confidence.</li>
-                        </ol>
-                    </div>
-
-                    <!-- Free Signals Banner -->
-                    <div class="free-signals-banner">
-                        <div style="font-size: 3em; margin-bottom: 15px;">📱</div>
-                        <h3 class="free-signals-title">Get FREE Trading Signals!</h3>
-                        <p class="free-signals-text">Join our Telegram channel and start receiving professional trading signals at no cost. Perfect for beginners!</p>
-                        <a href="https://t.me/+gPAQmb3i4E45ODU0" target="_blank" class="free-signals-btn">
-                            <span>Join Free Telegram Channel</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-
-                    <!-- Pricing Section -->
-                    <div class="pricing-section">
-                        <h2 class="pricing-title">📚 Learn to Trade With Us</h2>
-                        <p class="pricing-subtitle">Choose the perfect plan to accelerate your trading journey</p>
-
-                        <div class="pricing-cards">
-                            <!-- Beginner Course -->
-                            <div class="pricing-card">
-                                <div class="pricing-name">Beginner Course</div>
-                                <div class="pricing-price">$50</div>
-                                <ul class="pricing-features">
-                                    <li>Complete Beginner Course</li>
-                                    <li>Trading Fundamentals</li>
-                                    <li>1 Month Signals</li>
-                                    <li>Zoom Meetings</li>
-                                </ul>
-                                <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Get Started</a>
-                            </div>
-
-                            <!-- Full Course -->
-                            <div class="pricing-card">
-                                <div class="pricing-name">Full Course</div>
-                                <div class="pricing-price">$75</div>
-                                <ul class="pricing-features">
-                                    <li>Complete Full Course</li>
-                                    <li>Advanced Strategies</li>
-                                    <li>2 Months Signals</li>
-                                    <li>Priority Zoom Meetings</li>
-                                    <li>Course Materials</li>
-                                </ul>
-                                <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Enroll Now</a>
-                            </div>
-
-                            <!-- Full Course + Membership (FEATURED) -->
-                            <div class="pricing-card featured">
-                                <div class="pricing-name">Full Course + Membership</div>
-                                <div class="pricing-price">$120</div>
-                                <ul class="pricing-features">
-                                    <li>Complete Full Course</li>
-                                    <li>Advanced Strategies</li>
-                                    <li>Premium Membership Access</li>
-                                    <li>Unlimited Signals</li>
-                                    <li>Private Trading Community</li>
-                                    <li>Weekly Market Analysis</li>
-                                </ul>
-                                <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Join Now</a>
-                            </div>
-
-                            <!-- VIP One-on-One -->
-                            <div class="pricing-card">
-                                <div class="pricing-name">VIP One-on-One</div>
-                                <div class="pricing-price">$180</div>
-                                <ul class="pricing-features">
-                                    <li>Complete Full Course</li>
-                                    <li>Personal Mentorship</li>
-                                    <li>One-on-One Sessions</li>
-                                    <li>Premium Membership</li>
-                                    <li>Unlimited Signals</li>
-                                    <li>24/7 Direct Support</li>
-                                    <li>Personalized Strategy</li>
-                                </ul>
-                                <a href="https://chat.whatsapp.com/JTITX3m5RCG0p1nv60w5Kz?mode=hqrc" target="_blank" class="pricing-btn">Go Premium</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trading-tip" style="background: linear-gradient(135deg, #e6f9f3 0%, #cceeff 100%); border-left: 6px solid var(--primary-green);">
-                        <strong>💡 Final Words of Wisdom:</strong>
-                        <p>"The market doesn't care about your feelings, your bills, or your dreams. It only responds to your discipline, your risk management, and your patience. Trade with your head, not your heart. Profit with ease!"</p>
-                    </div>
-
-                    <div style="text-align: center; margin: 40px 0;">
-                        <img src="public/assets/images/logo.png" alt="Profit With Ease" style="max-width: 200px;">
-                    </div>
-
-                    <h2 style="text-align: center; color: var(--primary-green); font-family: 'Playfair Display', serif; font-size: 2.5em;">Welcome to the Academy 🚀</h2>
-
-                    <div class="trading-joke">
-                        <strong>One Last Laugh for the Road 😄</strong>
-                        <p>Q: How many traders does it take to change a lightbulb?</p>
-                        <p>A: None. They'll just wait for a "bullish reversal pattern" and hope it fixes itself! 💡📈</p>
-                        <p><em>Now go forth and trade smart!</em></p>
-                    </div>
-
-                    <div class="chapter-nav">
-                        <button class="chapter-nav-btn" onclick="previousPage()">
-                            <i class="fas fa-chevron-left"></i> Previous
-                        </button>
-                        <button class="chapter-nav-btn" onclick="goToPage(0)">
-                            <i class="fas fa-home"></i> Back to Start
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <script>
-        let currentPage = 0;
-        const totalPages = 8;
-
         // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1338,85 +940,60 @@
             }, 1500);
         });
 
-        // Navigation Functions
-        function goToPage(pageNum) {
-            if (pageNum < 0 || pageNum >= totalPages) return;
+        // Smooth Scroll & Active Navigation
+        const navItems = document.querySelectorAll('.nav-item');
+        const content = document.getElementById('mainContent');
 
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                // Update active state
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
             });
+        });
 
-            // Show selected page
-            document.querySelector(`[data-page="${pageNum}"]`).classList.add('active');
+        // Scroll Spy - Update active nav on scroll
+        const sections = document.querySelectorAll('section');
 
-            // Update TOC
-            document.querySelectorAll('.toc-item').forEach((item, index) => {
-                item.classList.toggle('active', index === pageNum);
-            });
+        content.addEventListener('scroll', () => {
+            let currentSection = '';
 
-            // Update page number
-            document.getElementById('pageNumber').textContent = `Page ${pageNum + 1}`;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
 
-            // Scroll to top
-            document.getElementById('bookContent').scrollTop = 0;
-
-            currentPage = pageNum;
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages - 1) {
-                goToPage(currentPage + 1);
-            }
-        }
-
-        function previousPage() {
-            if (currentPage > 0) {
-                goToPage(currentPage - 1);
-            }
-        }
-
-        // TOC Navigation
-        document.querySelectorAll('.toc-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const page = parseInt(item.getAttribute('data-page'));
-                goToPage(page);
-
-                // Hide TOC on mobile after selection
-                if (window.innerWidth <= 1024) {
-                    document.getElementById('toc').classList.remove('visible');
+                if (content.scrollTop >= sectionTop - 100) {
+                    currentSection = section.getAttribute('id');
                 }
             });
-        });
 
-        // TOC Toggle (Mobile)
-        document.getElementById('tocToggle').addEventListener('click', () => {
-            document.getElementById('toc').classList.toggle('visible');
-        });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').substring(1) === currentSection) {
+                    item.classList.add('active');
+                }
+            });
 
-        // Scroll to Top
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        const bookContent = document.getElementById('bookContent');
-
-        bookContent.addEventListener('scroll', () => {
-            if (bookContent.scrollTop > 300) {
-                scrollToTopBtn.classList.add('visible');
+            // Scroll to top button
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (content.scrollTop > 300) {
+                scrollBtn.classList.add('visible');
             } else {
-                scrollToTopBtn.classList.remove('visible');
+                scrollBtn.classList.remove('visible');
             }
         });
 
-        scrollToTopBtn.addEventListener('click', () => {
-            bookContent.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Keyboard Navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextPage();
-            if (e.key === 'ArrowLeft') previousPage();
+        // Scroll to Top functionality
+        document.getElementById('scrollToTop').addEventListener('click', () => {
+            content.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
