@@ -1,0 +1,12 @@
+{
+  "name": "chido-forex-academy-ebook",
+  "version": "1.0.0",
+  "description": "Chido Forex Academy - The Definitive Guide to Exness & MT5 Mastery",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build required for static site'"
+  },
+  "keywords": ["forex", "trading", "ebook"],
+  "author": "Chido Forex Academy",
+  "license": "MIT"
+}
